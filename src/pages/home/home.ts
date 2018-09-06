@@ -12,7 +12,7 @@ export class HomePage {
 
   }
 
-  onGoToUsers(){
+  onGoToUsers() {
     this.navCtrl.push(UsersPage);
   }
 
