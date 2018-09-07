@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, MenuController } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Quote } from '../../data/quote.interface';
 import { QuotesService } from '../../services/quotes';
 import { QuotePage } from '../quote/quote';
+import { SettingService } from '../../services/settings/setting-service';
 
 @Component({
   selector: 'page-favorites',
@@ -16,8 +17,7 @@ export class FavoritesPage {
     public navParams: NavParams,
     private quotesService: QuotesService,
     private modalController: ModalController,
-    private menuController: MenuController) {
-
+    private settingService: SettingService) {
   }
 
   //Always executed even if page is cached
@@ -59,7 +59,8 @@ export class FavoritesPage {
     this.removeFromFavorites(quote);
   }
 
-  onOpenMenu() {
-    this.menuController.open();
+  getBackground() {
+    return this.settingService.isAltbackground() ? 'altQuoteBackground' : 'quoteBackground';
   }
+
 }
